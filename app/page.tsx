@@ -1,15 +1,14 @@
 import Link from "next/link"
 import Image from "next/image"
-import { getCollections, getAllProducts, getProductsByTag } from "@/lib/shopify"
+import { getAllProducts, getProductsByTag } from "@/lib/shopify"
 import { Button } from "@/components/ui/button"
 import ProductCard from "@/components/product-card"
+import HeaderSection from "@/components/header-section"
 
 export default async function Home() {
-  const { body: collectionsData } = await getCollections()
   const { body: productsData } = await getAllProducts()
   const { body: housePlantsData } = await getProductsByTag("Houseplant 1", 5)
 
-  const collections = collectionsData?.data?.collections?.edges || []
   const products = productsData?.data?.products?.edges || []
   const housePlants = housePlantsData?.data?.products?.edges || []
 
@@ -43,24 +42,31 @@ export default async function Home() {
 
   return (
     <div className="bg-cream">
-      {/* Header Image */}
+      <HeaderSection />
 
       {/* Find Your Plant Section */}
       <section className="bg-cream">
-        <div className="bg-coral/90 py-6">
-          <h2 className="text-3xl font-bold text-white text-center">
-            Find Your Plant
+        <div className="bg-[var(--color-coral)]/90 py-6 pl-8">
+          <h2 className="text-3xl font-bold text-[var(--color-coral)] text-left">
+            Shop By Plant
           </h2>
+          <h3 className="text-left text-gray-700 mt-2">What are you growing?</h3>
         </div>
 
-        <div className="py-6 px-4 bg-[#f0ede5]">
+        <div 
+          id="collection-section"
+          className="py-6 px-4 bg-[#f0ede5]"
+        >
           <h3 className="text-sm text-gray-500 uppercase mb-4 text-center">
             CHOOSE A COLLECTION
           </h3>
 
           <div className="grid grid-cols-5 gap-3 overflow-x-auto hide-scrollbar pb-2">
-            <a href="#house-plants" className="flex flex-col items-center">
-              <div className="w-full aspect-square rounded-md overflow-hidden border border-gray-200 mb-2 relative">
+            <a 
+              href="#house-plants" 
+              className="flex flex-col items-center group"
+            >
+              <div className="w-full aspect-square rounded-md overflow-hidden border mb-2 relative transition-all duration-150 border-gray-200 group-hover:border-black">
                 <Image
                   src="/images/collection_tiles_images/houseplants_tile.jpg"
                   alt="House Plants"
@@ -69,13 +75,16 @@ export default async function Home() {
                 />
               </div>
               <div className="text-center">
-                <p className="font-bold text-xs">HOUSE</p>
-                <p className="font-bold text-xs">PLANTS</p>
+                <p className="font-bold text-xs group-hover:text-black">HOUSE</p>
+                <p className="font-bold text-xs group-hover:text-black">PLANTS</p>
               </div>
             </a>
 
-            <a href="#lawn-garden" className="flex flex-col items-center">
-              <div className="w-full aspect-square rounded-md overflow-hidden border border-gray-200 mb-2 relative">
+            <a 
+              href="#lawn-garden" 
+              className="flex flex-col items-center group"
+            >
+              <div className="w-full aspect-square rounded-md overflow-hidden border mb-2 relative transition-all duration-150 border-gray-200 group-hover:border-black">
                 <Image
                   src="/images/collection_tiles_images/lawn_and_garden_tile.jpg"
                   alt="Lawn & Garden"
@@ -84,13 +93,16 @@ export default async function Home() {
                 />
               </div>
               <div className="text-center text-gray-500">
-                <p className="font-medium text-xs">LAWN &</p>
-                <p className="font-medium text-xs">GARDEN</p>
+                <p className="font-medium text-xs group-hover:text-black">LAWN &</p>
+                <p className="font-medium text-xs group-hover:text-black">GARDEN</p>
               </div>
             </a>
 
-            <a href="#hydro-aquatic" className="flex flex-col items-center">
-              <div className="w-full aspect-square rounded-md overflow-hidden border border-gray-200 mb-2 relative">
+            <a 
+              href="#hydro-aquatic" 
+              className="flex flex-col items-center group"
+            >
+              <div className="w-full aspect-square rounded-md overflow-hidden border mb-2 relative transition-all duration-150 border-gray-200 group-hover:border-black">
                 <Image
                   src="/images/collection_tiles_images/hydro_and_aquatic_collection_tile.jpg"
                   alt="Hydro & Aquatic"
@@ -99,16 +111,16 @@ export default async function Home() {
                 />
               </div>
               <div className="text-center text-gray-500">
-                <p className="font-medium text-xs">HYDRO &</p>
-                <p className="font-medium text-xs">AQUATIC</p>
+                <p className="font-medium text-xs group-hover:text-black">HYDRO &</p>
+                <p className="font-medium text-xs group-hover:text-black">AQUATIC</p>
               </div>
             </a>
 
-            <a
-              href="#specialty-supplements"
-              className="flex flex-col items-center"
+            <a 
+              href="#specialty-supplements" 
+              className="flex flex-col items-center group"
             >
-              <div className="w-full aspect-square rounded-md overflow-hidden border border-gray-200 mb-2 relative">
+              <div className="w-full aspect-square rounded-md overflow-hidden border mb-2 relative transition-all duration-150 border-gray-200 group-hover:border-black">
                 <Image
                   src="/images/collection_tiles_images/specialty_supplements_tile.jpg"
                   alt="Specialty Supplements"
@@ -117,13 +129,16 @@ export default async function Home() {
                 />
               </div>
               <div className="text-center text-gray-500">
-                <p className="font-medium text-xs">SPECIALTY</p>
-                <p className="font-medium text-xs">SUPPLEMENTS</p>
+                <p className="font-medium text-xs group-hover:text-black">SPECIALTY</p>
+                <p className="font-medium text-xs group-hover:text-black">SUPPLEMENTS</p>
               </div>
             </a>
 
-            <a href="#bundles" className="flex flex-col items-center">
-              <div className="w-full aspect-square rounded-md overflow-hidden border border-gray-200 mb-2 relative">
+            <a 
+              href="#bundles" 
+              className="flex flex-col items-center group"
+            >
+              <div className="w-full aspect-square rounded-md overflow-hidden border mb-2 relative transition-all duration-150 border-gray-200 group-hover:border-black">
                 <Image
                   src="/images/collection_tiles_images/bundle_builder_tile.jpg"
                   alt="Bundle and Save"
@@ -132,8 +147,8 @@ export default async function Home() {
                 />
               </div>
               <div className="text-center text-gray-500">
-                <p className="font-medium text-xs">BUNDLE</p>
-                <p className="font-medium text-xs">AND SAVE</p>
+                <p className="font-medium text-xs group-hover:text-black">BUNDLE</p>
+                <p className="font-medium text-xs group-hover:text-black">AND SAVE</p>
               </div>
             </a>
           </div>
@@ -146,7 +161,7 @@ export default async function Home() {
           <h2 className="text-2xl font-bold">Houseplants</h2>
           <Link
             href="/collections/house-plants"
-            className="text-coral font-medium flex items-center"
+            className="text-[var(--color-coral)] font-medium flex items-center"
           >
             SEE ALL
           </Link>
@@ -165,7 +180,7 @@ export default async function Home() {
           <h2 className="text-2xl font-bold">Lawn & Garden</h2>
           <Link
             href="/collections/lawn-garden"
-            className="text-coral font-medium flex items-center"
+            className="text-[var(--color-coral)] font-medium flex items-center"
           >
             SEE ALL
           </Link>
@@ -184,7 +199,7 @@ export default async function Home() {
           <h2 className="text-2xl font-bold">Hydro & Aquatic</h2>
           <Link
             href="/collections/hydro-aquatic"
-            className="text-coral font-medium flex items-center"
+            className="text-[var(--color-coral)] font-medium flex items-center"
           >
             SEE ALL
           </Link>
@@ -203,7 +218,7 @@ export default async function Home() {
           <h2 className="text-2xl font-bold">Specialty Supplements</h2>
           <Link
             href="/collections/specialty-supplements"
-            className="text-coral font-medium flex items-center"
+            className="text-[var(--color-coral)] font-medium flex items-center"
           >
             SEE ALL
           </Link>
@@ -216,19 +231,13 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Grow Something Beautiful */}
-      <div className="text-center mb-8 px-4 py-8">
-        <h2 className="text-3xl font-bold mb-4">Grow something beautiful.</h2>
-        <Button className="bg-coral hover:bg-coral/90 text-white px-8">
-          SHOP SUMMER
-        </Button>
-      </div>
+      
 
       {/* Bundle Section */}
       <section id="bundles" className="mt-8 bg-lime-300 py-8 px-4">
         <div className="text-center mb-6">
           <h2 className="text-2xl font-bold">Create your</h2>
-          <h2 className="text-2xl font-bold text-coral">own Bundle!</h2>
+          <h2 className="text-2xl font-bold text-[var(--color-coral)]">own Bundle!</h2>
         </div>
 
         <div className="flex justify-center gap-4">
@@ -262,7 +271,7 @@ export default async function Home() {
         </div>
 
         <div className="flex justify-center mt-6">
-          <Button className="bg-coral hover:bg-coral/90 text-white px-8">
+          <Button className="bg-[var(--color-coral)] hover:bg-[var(--color-coral)]/90 text-white px-8">
             BUILD A BUNDLE
           </Button>
         </div>
@@ -284,7 +293,7 @@ export default async function Home() {
         <h2 className="text-xl font-medium mb-4">
           Plant-specific instructions.
         </h2>
-        <p className="text-2xl font-bold text-coral mb-6">It's that easy.</p>
+        <p className="text-2xl font-bold text-[var(--color-coral)] mb-6">It's that easy.</p>
 
         <div className="grid gap-3 mb-6">
           <div className="flex items-center gap-2">
@@ -301,14 +310,14 @@ export default async function Home() {
           </div>
         </div>
 
-        <Button className="bg-coral hover:bg-coral/90 text-white w-full">
+        <Button className="bg-[var(--color-coral)] hover:bg-[var(--color-coral)]/90 text-white w-full">
           SHOP ALL
         </Button>
       </section>
 
       {/* Reviews Section */}
       <section className="px-4 py-8">
-        <h2 className="text-3xl font-bold text-coral text-center mb-6">
+        <h2 className="text-3xl font-bold text-[var(--color-coral)] text-center mb-6">
           15,000+ Great Reviews
         </h2>
 
