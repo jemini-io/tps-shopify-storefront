@@ -12,16 +12,28 @@ export default function Footer() {
           <Link href="/collections/bundles" className="text-white font-medium">
             BUILD A BUNDLE
           </Link>
-          <Link href="/collections/house-plants" className="text-white font-medium">
+          <Link
+            href="/collections/house-plants"
+            className="text-white font-medium"
+          >
             HOUSEPLANTS
           </Link>
-          <Link href="/collections/garden-plants" className="text-white font-medium">
+          <Link
+            href="/collections/garden-plants"
+            className="text-white font-medium"
+          >
             GARDEN PLANTS
           </Link>
-          <Link href="/collections/hydro-aquatic" className="text-white font-medium">
+          <Link
+            href="/collections/hydro-aquatic"
+            className="text-white font-medium"
+          >
             HYDRO & AQUATIC
           </Link>
-          <Link href="/collections/plant-supplements" className="text-white font-medium">
+          <Link
+            href="/collections/plant-supplements"
+            className="text-white font-medium"
+          >
             PLANT SUPPLEMENTS
           </Link>
         </div>
@@ -50,8 +62,13 @@ export default function Footer() {
         </div>
 
         <div className="flex justify-center mt-6 mb-4">
-          <div className="relative w-40 h-12">
-            <Image src="/logos/basic_leaf_logo/logo.png" alt="TPS Plant Foods" fill className="object-contain" />
+          <div className="relative w-80 h-16">
+            <Image
+              src="/logos/label_logo/tps_plant_food_white_horiz_label_logo.png"
+              alt="TPS Plant Foods"
+              fill
+              className="object-contain"
+            />
           </div>
         </div>
 
@@ -72,5 +89,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
