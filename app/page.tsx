@@ -12,15 +12,28 @@ export default async function Home() {
   const { body: housePlantsData } = await getProductsByTag("Houseplant 1", 5)
 
   const products = productsData?.data?.products?.edges || []
-  const housePlants = housePlantsData?.data?.products?.edges || []
+  // const housePlants = housePlantsData?.data?.products?.edges || []
 
   // Group products by collection for display in sections
+    const housePlants = products
+    .filter(
+      (product: any) =>
+        product.node.title.toLowerCase().includes("lawn") ||
+        product.node.title.toLowerCase().includes("garden") ||
+        product.node.title.toLowerCase().includes("succulent") ||
+        product.node.title.toLowerCase().includes("fiddle") ||
+        product.node.title.toLowerCase().includes("monstera") ||
+        product.node.title.toLowerCase().includes("indoor"),
+    )
+    .slice(0, 4)
+
   const lawnGarden = products
     .filter(
       (product: any) =>
         product.node.title.toLowerCase().includes("lawn") ||
         product.node.title.toLowerCase().includes("garden") ||
-        product.node.title.toLowerCase().includes("tree"),
+        product.node.title.toLowerCase().includes("succulent") ||
+        product.node.title.toLowerCase().includes("lemon"),
     )
     .slice(0, 4)
 
@@ -29,7 +42,8 @@ export default async function Home() {
       (product: any) =>
         product.node.title.toLowerCase().includes("hydro") ||
         product.node.title.toLowerCase().includes("aquatic") ||
-        product.node.title.toLowerCase().includes("water"),
+        product.node.title.toLowerCase().includes("water") ||
+        product.node.title.toLowerCase().includes("monasteria"),
     )
     .slice(0, 4)
 
@@ -38,7 +52,9 @@ export default async function Home() {
       (product: any) =>
         product.node.title.toLowerCase().includes("supplement") ||
         product.node.title.toLowerCase().includes("specialty") ||
-        product.node.title.toLowerCase().includes("nutrient"),
+        product.node.title.toLowerCase().includes("nutrient") ||
+        product.node.title.toLowerCase().includes("monasteria") ||
+        product.node.title.toLowerCase().includes("indoor"),
     )
     .slice(0, 4)
 

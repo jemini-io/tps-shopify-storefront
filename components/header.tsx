@@ -8,6 +8,22 @@ import Image from "next/image"
 import { useCart } from "@/context/cart-context"
 import CartDrawer from "./cart-drawer"
 import SearchDialog from "./search-dialog"
+import { homeLink, collectionLinks, accountLinks } from "@/lib/links"
+
+const mainLinksList = [
+  homeLink,
+  collectionLinks.housePlants,
+  collectionLinks.lawnGarden,
+  collectionLinks.hydroAquatic,
+  collectionLinks.specialtySupplements,
+  collectionLinks.bundles,
+]
+
+const accountLinksList = [
+  accountLinks.account,
+  accountLinks.faq,
+  accountLinks.blog
+]
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -44,46 +60,17 @@ export default function Header() {
           </SheetTrigger>
           <SheetContent side="left" className="bg-cream">
             <div className="flex flex-col gap-6 mt-8">
-              <Link href="/" className="text-lg font-medium">
-                Home
-              </Link>
-              <Link
-                href="/collections/house-plants"
-                className="text-lg font-medium"
-              >
-                House Plants
-              </Link>
-              <Link
-                href="/collections/lawn-garden"
-                className="text-lg font-medium"
-              >
-                Lawn & Garden
-              </Link>
-              <Link
-                href="/collections/hydro-aquatic"
-                className="text-lg font-medium"
-              >
-                Hydro & Aquatic
-              </Link>
-              <Link
-                href="/collections/specialty-supplements"
-                className="text-lg font-medium"
-              >
-                Specialty Supplements
-              </Link>
-              <Link href="/collections/bundles" className="text-lg font-medium">
-                Bundles
-              </Link>
+              {mainLinksList.map((link) => (
+                <Link key={link.path} href={link.path} className="text-lg font-medium">
+                  {link.label.leftSide}
+                </Link>
+              ))}
               <div className="h-px bg-gray-200 my-2"></div>
-              <Link href="/account" className="text-lg font-medium">
-                My Account
-              </Link>
-              <Link href="/faq" className="text-lg font-medium">
-                FAQ
-              </Link>
-              <Link href="/blog" className="text-lg font-medium">
-                Blog
-              </Link>
+              {accountLinksList.map((link) => (
+                <Link key={link.path} href={link.path} className="text-lg font-medium">
+                  {link.label.leftSide}
+                </Link>
+              ))}
             </div>
           </SheetContent>
         </Sheet>

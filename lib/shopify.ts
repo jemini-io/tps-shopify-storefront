@@ -5,6 +5,13 @@ const storefrontAccessToken = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN || ""
 const apiKey = process.env.SHOPIFY_API_KEY || ""
 const apiSecretKey = process.env.SHOPIFY_API_SECRET_KEY || ""
 
+// console.log("************** DEBUG INFO **************")
+// console.log("SHOPIFY_STORE_DOMAIN:", domain)
+// console.log("SHOPIFY_STOREFRONT_ACCESS_TOKEN:", storefrontAccessToken)
+// console.log("SHOPIFY_API_KEY:", apiKey)
+// console.log("SHOPIFY_API_SECRET_KEY:", apiSecretKey)
+// console.log("****************************************")
+
 export async function shopifyFetch({
   query,
   variables = {},
@@ -15,6 +22,8 @@ export async function shopifyFetch({
   try {
     const endpoint = `https://${domain}/api/${LATEST_API_VERSION}/graphql.json`
 
+    // console.log("ENDPOINT:", endpoint)
+
     const result = await fetch(endpoint, {
       method: "POST",
       headers: {
@@ -23,6 +32,8 @@ export async function shopifyFetch({
       },
       body: JSON.stringify({ query, variables }),
     })
+
+    // console.log("RESULT:", result)
 
     return {
       status: result.status,
@@ -172,6 +183,10 @@ export async function getCollectionByHandle(handle: string) {
           id
           title
           description
+          image {
+            url
+            altText
+          }
           products(first: 12) {
             edges {
               node {

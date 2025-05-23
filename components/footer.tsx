@@ -1,64 +1,28 @@
 import Link from "next/link"
 import Image from "next/image"
+import { collectionLinks, accountLinks, legalLinks } from "@/lib/links";
+
 
 export default function Footer() {
   return (
     <footer className="bg-coral text-white">
       <div className="p-6 grid gap-4">
         <div className="grid gap-3">
-          <Link href="/collections" className="text-white font-medium">
-            SHOP ALL
-          </Link>
-          <Link href="/collections/bundles" className="text-white font-medium">
-            BUILD A BUNDLE
-          </Link>
-          <Link
-            href="/collections/house-plants"
-            className="text-white font-medium"
-          >
-            HOUSEPLANTS
-          </Link>
-          <Link
-            href="/collections/garden-plants"
-            className="text-white font-medium"
-          >
-            GARDEN PLANTS
-          </Link>
-          <Link
-            href="/collections/hydro-aquatic"
-            className="text-white font-medium"
-          >
-            HYDRO & AQUATIC
-          </Link>
-          <Link
-            href="/collections/plant-supplements"
-            className="text-white font-medium"
-          >
-            PLANT SUPPLEMENTS
-          </Link>
+          {Object.values(collectionLinks).map((link) => (
+            <Link key={link.path} href={link.path} className="text-white font-medium">
+              {link.label.footer.toUpperCase()}
+            </Link>
+          ))}
         </div>
 
         <div className="h-px bg-white/20 my-2"></div>
 
         <div className="grid gap-3">
-          <Link href="/account" className="text-white font-medium">
-            MY ACCOUNT
-          </Link>
-          <Link href="/faq" className="text-white font-medium">
-            ASK A QUESTION
-          </Link>
-          <Link href="/blog" className="text-white font-medium">
-            BLOG: THE POUR SPOUT
-          </Link>
-          <Link href="/shipping" className="text-white font-medium">
-            SHIPPING & RETURNS
-          </Link>
-          <Link href="/wholesale" className="text-white font-medium">
-            WHOLESALE
-          </Link>
-          <Link href="/affiliates" className="text-white font-medium">
-            AFFILIATES
-          </Link>
+          {Object.values(accountLinks).map((link) => (
+            <Link key={link.path} href={link.path} className="text-white font-medium">
+              {link.label.footer.toUpperCase()}
+            </Link>
+          ))}
         </div>
 
         <div className="flex justify-center mt-6 mb-4">
@@ -79,12 +43,11 @@ export default function Footer() {
         <div className="text-center text-xs mt-4">
           <p>Copyright TPS Nutrients, 2025</p>
           <div className="flex justify-center gap-4 mt-2">
-            <Link href="/terms" className="text-white underline">
-              Terms & Conditions
-            </Link>
-            <Link href="/privacy" className="text-white underline">
-              Privacy Policy
-            </Link>
+            {Object.values(legalLinks).map((link) => (
+              <Link key={link.path} href={link.path} className="text-white underline">
+                {link.label.footer}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
