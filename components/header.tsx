@@ -62,13 +62,13 @@ export default function Header() {
             <div className="flex flex-col gap-6 mt-8">
               {mainLinksList.map((link) => (
                 <Link key={link.path} href={link.path} className="text-lg font-medium">
-                  {link.label.leftSide}
+                  {link.label.menu}
                 </Link>
               ))}
               <div className="h-px bg-gray-200 my-2"></div>
               {accountLinksList.map((link) => (
                 <Link key={link.path} href={link.path} className="text-lg font-medium">
-                  {link.label.leftSide}
+                  {link.label.menu}
                 </Link>
               ))}
             </div>

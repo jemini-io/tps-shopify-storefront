@@ -6,6 +6,7 @@ import ProductCard from "@/components/product-card"
 import HeaderSection from "@/components/header-section"
 import ReviewCard from "@/components/review-card"
 import CollectionStickyWrapper from "@/components/collection-sticky-wrapper"
+import { comingSoonLink } from "@/lib/links"
 
 export default async function Home() {
   const { body: productsData } = await getAllProducts()
@@ -67,9 +68,12 @@ export default async function Home() {
         <h2 className="text-4xl md:text-5xl font-extrabold text-black text-center mb-6">
           Grow something beautiful.
         </h2>
-        <Button className="bg-[var(--color-coral)] hover:bg-[var(--color-coral)]/90 text-white text-lg font-bold px-10 py-4 rounded-full shadow-md">
-          SHOP SUMMER
-        </Button>
+        <Link href={comingSoonLink.path} passHref>
+          <Button className="bg-[var(--color-coral)] hover:bg-[var(--color-coral)]/90 text-white text-lg font-bold px-10 py-4 rounded-full shadow-md">
+            SHOP SUMMER
+          </Button>
+        </Link>
+
       </section>
 
       {/* Find Your Plant Section */}

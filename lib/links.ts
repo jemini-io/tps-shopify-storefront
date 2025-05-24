@@ -1,6 +1,10 @@
+const comingSoon = {
+    path: "/coming-soon",
+}
+
 const home = {
     label: {
-        leftSide: "Home",
+        menu: "Home",
         footer: "Home",
     },
     path: "/",
@@ -8,7 +12,7 @@ const home = {
 
 const collections = {
     label: {
-        leftSide: "Collections",
+        menu: "Collections",
         footer: "Shop All",
     },
     path: "/collections",
@@ -16,7 +20,7 @@ const collections = {
 
 const bundles = {
     label: {
-        leftSide: "Bundles",
+        menu: "Bundles",
         footer: "Build a Bundle",
     },
     path: "/collections/bundles",
@@ -24,7 +28,7 @@ const bundles = {
 
 const housePlants = {
     label: {
-        leftSide: "House Plants",
+        menu: "House Plants",
         footer: "House Plants",
     },
     path: "/collections/house-plants",
@@ -32,7 +36,7 @@ const housePlants = {
 
 const lawnGarden = {
     label: {
-        leftSide: "Lawn & Garden",
+        menu: "Lawn & Garden",
         footer: "Lawn & Garden",
     },
     path: "/collections/lawn-garden",
@@ -40,7 +44,7 @@ const lawnGarden = {
 
 const hydroAquatic = {
     label: {
-        leftSide: "Hydro & Aquatic",
+        menu: "Hydro & Aquatic",
         footer: "Hydro & Aquatic",
     },
     path: "/collections/hydro-aquatic",
@@ -48,7 +52,7 @@ const hydroAquatic = {
 
 const specialtySupplements = {
     label: {
-        leftSide: "Specialty Supplements",
+        menu: "Specialty Supplements",
         footer: "Specialty Supplements",
     },
     path: "/collections/specialty-supplements",
@@ -56,71 +60,80 @@ const specialtySupplements = {
 
 const account = {
     label: {
-        leftSide: "My Account",
+        menu: "My Account",
         footer: "My Account",
     },
-    path: "/account",
+    path: comingSoon.path
+    // path: "/account",
 }
 
 const faq = {
     label: {
-        leftSide: "FAQ",
+        menu: "FAQ",
         footer: "Ask a Question",
     },
-    path: "/faq",
+    path: comingSoon.path
+    // path: "/faq",
 }
 
 const blog = {
     label: {
-        leftSide: "Blog",
+        menu: "Blog",
         footer: "Blog: The Pour Spout",
     },
-    path: "/blog",
+    path: comingSoon.path
+    // path: "/blog",
 }
 
 const shipping = {
     label: {
-        leftSide: "Shipping & Returns",
+        menu: "Shipping & Returns",
         footer: "Shipping & Returns",
     },
-    path: "/shipping",
+    path: comingSoon.path
+    // path: "/shipping",
 }
 
 const wholesale = {
     label: {
-        leftSide: "Wholesale",
+        menu: "Wholesale",
         footer: "Wholesale",
     },
-    path: "/wholesale",
+    path: comingSoon.path
+    // path: "/wholesale",
 }
 
 const affiliates = {
     label: {
-        leftSide: {
-            leftSide: "Affiliates",
+        menu: {
+            menu: "Affiliates",
             footer: "Affiliates",
         },
         footer: "Affiliates",
     },
-    path: "/affiliates",
+    path: comingSoon.path
+    // path: "/affiliates",
 }
 
 const terms = {
     label: {
-        leftSide: "Terms of Service",
+        menu: "Terms of Service",
         footer: "Terms of Service",
     },
-    path: "/terms",
+    path: comingSoon.path
+    // path: "/terms",
 }
 
 const privacy = {
     label: {
-        leftSide: "Privacy Policy",
+        menu: "Privacy Policy",
         footer: "Privacy Policy",
     },
-    path: "/privacy",
+    path: comingSoon.path
+    // path: "/privacy",
 }
 
+export { comingSoon as comingSoonLink }
 export { home as homeLink }
 
 export const collectionLinks = {
