@@ -8,9 +8,9 @@ export default function Footer() {
     <footer className="bg-coral text-white">
       <div className="p-6 grid gap-4">
         <div className="grid gap-3">
-          {Object.values(collectionLinks).map((link) => (
-            <Link key={link.path} href={link.path} className="text-white font-medium">
-              {link.label.footer.toUpperCase()}
+          {Object.values(collectionLinks).map((linkObject) => (
+            <Link key={linkObject.path} href={linkObject.path} className="text-white font-medium">
+              {linkObject.label.footer.toUpperCase()}
             </Link>
           ))}
         </div>
@@ -18,9 +18,9 @@ export default function Footer() {
         <div className="h-px bg-white/20 my-2"></div>
 
         <div className="grid gap-3">
-          {Object.values(accountLinks).map((link) => (
-            <Link key={link.path} href={link.path} className="text-white font-medium">
-              {link.label.footer.toUpperCase()}
+          {Object.values(accountLinks).map((linkObject) => (
+            <Link key={linkObject.path} href={linkObject.path} className="text-white font-medium">
+              {linkObject.label.footer.toUpperCase()}
             </Link>
           ))}
         </div>
@@ -43,9 +43,9 @@ export default function Footer() {
         <div className="text-center text-xs mt-4">
           <p>Copyright TPS Nutrients, 2025</p>
           <div className="flex justify-center gap-4 mt-2">
-            {Object.values(legalLinks).map((link) => (
-              <Link key={link.path} href={link.path} className="text-white underline">
-                {link.label.footer}
+            {Object.values(legalLinks).map((linkObject) => (
+              <Link key={linkObject.path} href={linkObject.path} className="text-white underline">
+                {linkObject.label.footer}
               </Link>
             ))}
           </div>

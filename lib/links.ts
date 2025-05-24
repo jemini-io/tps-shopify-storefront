@@ -1,8 +1,8 @@
-const comingSoon = {
+const comingSoonLinkObject = {
     path: "/coming-soon",
 }
 
-const home = {
+const homeLinkObject = {
     label: {
         menu: "Home",
         footer: "Home",
@@ -10,151 +10,189 @@ const home = {
     path: "/",
 }
 
-const collections = {
+const collectionSlug = "collections"
+const collectionsLinkObject = {
     label: {
         menu: "Collections",
         footer: "Shop All",
     },
-    path: "/collections",
+    path: `/${collectionSlug}`,
+    anchor: `#${collectionSlug}`,
+    slug: collectionSlug,
 }
 
-const bundles = {
+const bundlesSlug = "bundles"
+const bundlesLinkObject = {
     label: {
         menu: "Bundles",
         footer: "Build a Bundle",
     },
-    path: "/collections/bundles",
+    path: `/${collectionSlug}/${bundlesSlug}`,
+    anchor: `#${bundlesSlug}`,
+    slug: bundlesSlug,
 }
 
-const housePlants = {
+const housePlantsSlug = "house-plants"
+const housePlantsLinkObject = {
     label: {
         menu: "House Plants",
         footer: "House Plants",
     },
-    path: "/collections/house-plants",
+    path: `/${collectionSlug}/${housePlantsSlug}`,
+    anchor: `#${housePlantsSlug}`,
+    slug: housePlantsSlug,
 }
 
-const lawnGarden = {
+const lawnGardenSlug = "lawn-garden"
+const lawnGardenLinkObject = {
     label: {
         menu: "Lawn & Garden",
         footer: "Lawn & Garden",
     },
-    path: "/collections/lawn-garden",
+    path: `/${collectionSlug}/${lawnGardenSlug}`,
+    anchor: `#${lawnGardenSlug}`,
+    slug: lawnGardenSlug,
 }
 
-const hydroAquatic = {
+const hydroAquaticSlug = "hydro-aquatic"
+const hydroAquaticLinkObject = {
     label: {
         menu: "Hydro & Aquatic",
         footer: "Hydro & Aquatic",
     },
-    path: "/collections/hydro-aquatic",
+    path: `/${collectionSlug}/${hydroAquaticSlug}`,
+    anchor: `#${hydroAquaticSlug}`,
+    slug: hydroAquaticSlug,
 }
 
-const specialtySupplements = {
+const specialtySupplementsSlug = "specialty-supplements"
+const specialtySupplementsLinkObject = {
     label: {
         menu: "Specialty Supplements",
         footer: "Specialty Supplements",
     },
-    path: "/collections/specialty-supplements",
+    path: `/${collectionSlug}/${specialtySupplementsSlug}`,
+    anchor: `#${specialtySupplementsSlug}`,
+    slug: specialtySupplementsSlug,
 }
 
-const account = {
+const accountSlug = "account"
+const accountLinkObject = {
     label: {
         menu: "My Account",
         footer: "My Account",
     },
-    path: comingSoon.path
-    // path: "/account",
+    path: comingSoonLinkObject.path,
+    // path: `/${accountSlug}`,
+    anchor: `#${accountSlug}`,
+    slug: accountSlug,
 }
 
-const faq = {
+const faqSlug = "faq"
+const faqLinkObject = {
     label: {
         menu: "FAQ",
         footer: "Ask a Question",
     },
-    path: comingSoon.path
-    // path: "/faq",
+    path: comingSoonLinkObject.path,
+    // path: `/${faqSlug}`,
+    anchor: `#${faqSlug}`,
+    slug: faqSlug,
 }
 
-const blog = {
+const blogSlug = "blog"
+const blogLinkObject = {
     label: {
         menu: "Blog",
         footer: "Blog: The Pour Spout",
     },
-    path: comingSoon.path
-    // path: "/blog",
+    path: comingSoonLinkObject.path,
+    // path: `/${blogSlug}`,
+    anchor: `#${blogSlug}`,
+    slug: blogSlug,
 }
 
-const shipping = {
+const shippingSlug = "shipping"
+const shippingLinkObject = {
     label: {
         menu: "Shipping & Returns",
         footer: "Shipping & Returns",
     },
-    path: comingSoon.path
-    // path: "/shipping",
+    path: comingSoonLinkObject.path,
+    // path: `/${shippingSlug}`,
+    anchor: `#${shippingSlug}`,
+    slug: shippingSlug,
 }
 
-const wholesale = {
+const wholesaleSlug = "wholesale"
+const wholesaleLinkObject = {
     label: {
         menu: "Wholesale",
         footer: "Wholesale",
     },
-    path: comingSoon.path
-    // path: "/wholesale",
+    path: comingSoonLinkObject.path,
+    // path: `/${wholesaleSlug}`,
+    anchor: `#${wholesaleSlug}`,
+    slug: wholesaleSlug,
 }
 
-const affiliates = {
+const affiliatesSlug = "affiliates"
+const affiliatesLinkObject = {
     label: {
-        menu: {
-            menu: "Affiliates",
-            footer: "Affiliates",
-        },
+        menu: "Affiliates",
         footer: "Affiliates",
     },
-    path: comingSoon.path
-    // path: "/affiliates",
+    path: comingSoonLinkObject.path,
+    // path: `/${affiliatesSlug}`,
+    anchor: `#${affiliatesSlug}`,
+    slug: affiliatesSlug,
 }
 
-const terms = {
+const termsSlug = "terms"
+const termsLinkObject = {
     label: {
         menu: "Terms of Service",
         footer: "Terms of Service",
     },
-    path: comingSoon.path
-    // path: "/terms",
+    path: comingSoonLinkObject.path,
+    // path: `/${termsSlug}`,
+    anchor: `#${termsSlug}`,
+    slug: termsSlug,
 }
 
-const privacy = {
+const privacySlug = "privacy"
+const privacyLinkObject = {
     label: {
         menu: "Privacy Policy",
         footer: "Privacy Policy",
     },
-    path: comingSoon.path
-    // path: "/privacy",
+    path: comingSoonLinkObject.path,
+    // path: `/${privacySlug}`,
+    anchor: `#${privacySlug}`,
+    slug: privacySlug,
 }
 
-export { comingSoon as comingSoonLink }
-export { home as homeLink }
+export { comingSoonLinkObject, homeLinkObject }
 
 export const collectionLinks = {
-  collections,
-  bundles,
-  housePlants,
-  lawnGarden,
-  hydroAquatic,
-  specialtySupplements,
+  collectionsLinkObject,
+  bundlesLinkObject,
+  housePlantsLinkObject,
+  lawnGardenLinkObject,
+  hydroAquaticLinkObject,
+  specialtySupplementsLinkObject,
 }
 
 export const accountLinks = {
-  account,
-  faq,
-  blog,
-  shipping,
-  wholesale,
-  affiliates,
+  accountLinkObject,
+  faqLinkObject,
+  blogLinkObject,
+  shippingLinkObject,
+  wholesaleLinkObject,
+  affiliatesLinkObject,
 }
 
 export const legalLinks = {
-    terms,
-    privacy,
+    termsLinkObject,
+    privacyLinkObject,
 }

@@ -8,21 +8,21 @@ import Image from "next/image"
 import { useCart } from "@/context/cart-context"
 import CartDrawer from "./cart-drawer"
 import SearchDialog from "./search-dialog"
-import { homeLink, collectionLinks, accountLinks } from "@/lib/links"
+import { homeLinkObject, collectionLinks, accountLinks } from "@/lib/links"
 
 const mainLinksList = [
-  homeLink,
-  collectionLinks.housePlants,
-  collectionLinks.lawnGarden,
-  collectionLinks.hydroAquatic,
-  collectionLinks.specialtySupplements,
-  collectionLinks.bundles,
+  homeLinkObject,
+  collectionLinks.housePlantsLinkObject,
+  collectionLinks.lawnGardenLinkObject,
+  collectionLinks.hydroAquaticLinkObject,
+  collectionLinks.specialtySupplementsLinkObject,
+  collectionLinks.bundlesLinkObject,
 ]
 
 const accountLinksList = [
-  accountLinks.account,
-  accountLinks.faq,
-  accountLinks.blog
+  accountLinks.accountLinkObject,
+  accountLinks.faqLinkObject,
+  accountLinks.blogLinkObject,
 ]
 
 export default function Header() {
@@ -60,15 +60,15 @@ export default function Header() {
           </SheetTrigger>
           <SheetContent side="left" className="bg-cream">
             <div className="flex flex-col gap-6 mt-8">
-              {mainLinksList.map((link) => (
-                <Link key={link.path} href={link.path} className="text-lg font-medium">
-                  {link.label.menu}
+              {mainLinksList.map((linkObject) => (
+                <Link key={linkObject.path} href={linkObject.path} className="text-lg font-medium">
+                  {linkObject.label.menu}
                 </Link>
               ))}
               <div className="h-px bg-gray-200 my-2"></div>
-              {accountLinksList.map((link) => (
-                <Link key={link.path} href={link.path} className="text-lg font-medium">
-                  {link.label.menu}
+              {accountLinksList.map((linkObject) => (
+                <Link key={linkObject.path} href={linkObject.path} className="text-lg font-medium">
+                  {linkObject.label.menu}
                 </Link>
               ))}
             </div>

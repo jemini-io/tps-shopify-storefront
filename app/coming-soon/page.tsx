@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button"
+import { homeLinkObject } from '@/lib/links';
 
 export default function ComingSoonPage() {
   return (
@@ -25,7 +26,7 @@ export default function ComingSoonPage() {
         <p className="text-lg text-gray-200 text-center">
           This page is under construction. Please check back later!
         </p>
-        <Link href="/" className="text-[var(--color-coral)] font-medium flex items-center">
+        <Link href={homeLinkObject.path} className="text-[var(--color-coral)] font-medium flex items-center">
           <Button className="mt-6 px-4 py-2 bg-white text-[var(--color-coral)] rounded hover:bg-gray-100 transition-colors">
             GO BACK HOME
           </Button>
