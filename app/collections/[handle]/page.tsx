@@ -4,6 +4,8 @@ import Image from "next/image"
 import ProductCard from "@/components/product-card"
 import { Button } from "@/components/ui/button"
 import StickyCategoryNav from "@/components/sticky-category-nav"
+import { redirect } from "next/navigation";
+import { comingSoonLinkObject } from "@/lib/links"
 
 export default async function CollectionPage({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params
@@ -15,7 +17,8 @@ export default async function CollectionPage({ params }: { params: Promise<{ han
   const { body: collectionsData } = await getCollections()
 
   if (!body?.data?.collectionByHandle) {
-    notFound()
+    //notFound()
+    redirect(comingSoonLinkObject.path);
   }
 
   const collection = body.data.collectionByHandle

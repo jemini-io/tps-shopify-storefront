@@ -6,13 +6,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import AddToCartButton from "@/components/add-to-cart-button"
 import ProductVariantSelector from "@/components/product-variant-selector"
 import PurchaseOptions from "@/components/purchase-options"
+import { redirect } from "next/navigation";
+import { comingSoonLinkObject } from "@/lib/links"
 
 export default async function ProductPage({ params }: { params: { handle: string } }) {
   const { handle } = params
   const { body } = await getProductByHandle(handle)
 
   if (!body?.data?.productByHandle) {
-    notFound()
+    //notFound()
+    redirect(comingSoonLinkObject.path);
   }
 
   const product = body.data.productByHandle
