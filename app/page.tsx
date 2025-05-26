@@ -369,10 +369,11 @@ export default async function Home() {
             <p>Nourish every plant.</p>
           </div>
         </div>
-
-        <Button className="bg-[var(--color-coral)] hover:bg-[var(--color-coral)]/90 text-white w-full">
-          SHOP ALL
-        </Button>
+        <Link href={comingSoonLinkObject.path} passHref>
+          <Button className="bg-[var(--color-coral)] hover:bg-[var(--color-coral)]/90 text-white w-full">
+            SHOP ALL
+          </Button>
+        </Link>
       </section>
 
       {/* Reviews Section */}
