@@ -8,6 +8,22 @@ import Image from "next/image"
 import { useCart } from "@/context/cart-context"
 import CartDrawer from "./cart-drawer"
 import SearchDialog from "./search-dialog"
+import { homeLinkObject, collectionLinks, accountLinks } from "@/lib/links"
+
+const mainLinksList = [
+  homeLinkObject,
+  collectionLinks.housePlantsLinkObject,
+  collectionLinks.lawnGardenLinkObject,
+  collectionLinks.hydroAquaticLinkObject,
+  collectionLinks.specialtySupplementsLinkObject,
+  collectionLinks.bundlesLinkObject,
+]
+
+const accountLinksList = [
+  accountLinks.accountLinkObject,
+  accountLinks.faqLinkObject,
+  accountLinks.blogLinkObject,
+]
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -44,46 +60,17 @@ export default function Header() {
           </SheetTrigger>
           <SheetContent side="left" className="bg-cream">
             <div className="flex flex-col gap-6 mt-8">
-              <Link href="/" className="text-lg font-medium">
-                Home
-              </Link>
-              <Link
-                href="/collections/house-plants"
-                className="text-lg font-medium"
-              >
-                House Plants
-              </Link>
-              <Link
-                href="/collections/lawn-garden"
-                className="text-lg font-medium"
-              >
-                Lawn & Garden
-              </Link>
-              <Link
-                href="/collections/hydro-aquatic"
-                className="text-lg font-medium"
-              >
-                Hydro & Aquatic
-              </Link>
-              <Link
-                href="/collections/specialty-supplements"
-                className="text-lg font-medium"
-              >
-                Specialty Supplements
-              </Link>
-              <Link href="/collections/bundles" className="text-lg font-medium">
-                Bundles
-              </Link>
+              {mainLinksList.map((linkObject) => (
+                <Link key={linkObject.path} href={linkObject.path} className="text-lg font-medium">
+                  {linkObject.label.menu}
+                </Link>
+              ))}
               <div className="h-px bg-gray-200 my-2"></div>
-              <Link href="/account" className="text-lg font-medium">
-                My Account
-              </Link>
-              <Link href="/faq" className="text-lg font-medium">
-                FAQ
-              </Link>
-              <Link href="/blog" className="text-lg font-medium">
-                Blog
-              </Link>
+              {accountLinksList.map((linkObject) => (
+                <Link key={linkObject.path} href={linkObject.path} className="text-lg font-medium">
+                  {linkObject.label.menu}
+                </Link>
+              ))}
             </div>
           </SheetContent>
         </Sheet>

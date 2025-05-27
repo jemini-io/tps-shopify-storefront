@@ -6,21 +6,35 @@ import ProductCard from "@/components/product-card"
 import HeaderSection from "@/components/header-section"
 import ReviewCard from "@/components/review-card"
 import CollectionStickyWrapper from "@/components/collection-sticky-wrapper"
+import { comingSoonLinkObject, collectionLinks } from "@/lib/links"
 
 export default async function Home() {
   const { body: productsData } = await getAllProducts()
   const { body: housePlantsData } = await getProductsByTag("Houseplant 1", 5)
 
   const products = productsData?.data?.products?.edges || []
-  const housePlants = housePlantsData?.data?.products?.edges || []
+  // const housePlants = housePlantsData?.data?.products?.edges || []
 
   // Group products by collection for display in sections
+    const housePlants = products
+    .filter(
+      (product: any) =>
+        product.node.title.toLowerCase().includes("lawn") ||
+        product.node.title.toLowerCase().includes("garden") ||
+        product.node.title.toLowerCase().includes("succulent") ||
+        product.node.title.toLowerCase().includes("fiddle") ||
+        product.node.title.toLowerCase().includes("monstera") ||
+        product.node.title.toLowerCase().includes("indoor"),
+    )
+    .slice(0, 4)
+
   const lawnGarden = products
     .filter(
       (product: any) =>
         product.node.title.toLowerCase().includes("lawn") ||
         product.node.title.toLowerCase().includes("garden") ||
-        product.node.title.toLowerCase().includes("tree"),
+        product.node.title.toLowerCase().includes("succulent") ||
+        product.node.title.toLowerCase().includes("lemon"),
     )
     .slice(0, 4)
 
@@ -29,7 +43,8 @@ export default async function Home() {
       (product: any) =>
         product.node.title.toLowerCase().includes("hydro") ||
         product.node.title.toLowerCase().includes("aquatic") ||
-        product.node.title.toLowerCase().includes("water"),
+        product.node.title.toLowerCase().includes("water") ||
+        product.node.title.toLowerCase().includes("monasteria"),
     )
     .slice(0, 4)
 
@@ -38,7 +53,9 @@ export default async function Home() {
       (product: any) =>
         product.node.title.toLowerCase().includes("supplement") ||
         product.node.title.toLowerCase().includes("specialty") ||
-        product.node.title.toLowerCase().includes("nutrient"),
+        product.node.title.toLowerCase().includes("nutrient") ||
+        product.node.title.toLowerCase().includes("monasteria") ||
+        product.node.title.toLowerCase().includes("indoor"),
     )
     .slice(0, 4)
 
@@ -51,9 +68,12 @@ export default async function Home() {
         <h2 className="text-4xl md:text-5xl font-extrabold text-black text-center mb-6">
           Grow something beautiful.
         </h2>
-        <Button className="bg-[var(--color-coral)] hover:bg-[var(--color-coral)]/90 text-white text-lg font-bold px-10 py-4 rounded-full shadow-md">
-          SHOP SUMMER
-        </Button>
+        <Link href={comingSoonLinkObject.path} passHref>
+          <Button className="bg-[var(--color-coral)] hover:bg-[var(--color-coral)]/90 text-white text-lg font-bold px-10 py-4 rounded-full shadow-md">
+            SHOP SUMMER
+          </Button>
+        </Link>
+
       </section>
 
       {/* Find Your Plant Section */}
@@ -74,7 +94,7 @@ export default async function Home() {
 
           <div className="grid grid-cols-5 gap-3 overflow-x-auto hide-scrollbar pb-2">
             <a
-              href="#house-plants"
+              href={collectionLinks.housePlantsLinkObject.anchor}
               className="flex flex-col items-center group"
             >
               <div className="w-full aspect-square rounded-md overflow-hidden border mb-2 relative transition-all duration-150 border-gray-200 group-hover:border-black">
@@ -95,7 +115,7 @@ export default async function Home() {
               </div>
             </a>
 
-            <a href="#lawn-garden" className="flex flex-col items-center group">
+            <a href={collectionLinks.lawnGardenLinkObject.anchor} className="flex flex-col items-center group">
               <div className="w-full aspect-square rounded-md overflow-hidden border mb-2 relative transition-all duration-150 border-gray-200 group-hover:border-black">
                 <Image
                   src="/images/collection_tiles_images/lawn_and_garden_tile.jpg"
@@ -115,7 +135,7 @@ export default async function Home() {
             </a>
 
             <a
-              href="#hydro-aquatic"
+              href={collectionLinks.hydroAquaticLinkObject.anchor}
               className="flex flex-col items-center group"
             >
               <div className="w-full aspect-square rounded-md overflow-hidden border mb-2 relative transition-all duration-150 border-gray-200 group-hover:border-black">
@@ -137,7 +157,7 @@ export default async function Home() {
             </a>
 
             <a
-              href="#specialty-supplements"
+              href={collectionLinks.specialtySupplementsLinkObject.anchor}
               className="flex flex-col items-center group"
             >
               <div className="w-full aspect-square rounded-md overflow-hidden border mb-2 relative transition-all duration-150 border-gray-200 group-hover:border-black">
@@ -158,7 +178,7 @@ export default async function Home() {
               </div>
             </a>
 
-            <a href="#bundles" className="flex flex-col items-center group">
+            <a href={collectionLinks.bundlesLinkObject.anchor} className="flex flex-col items-center group">
               <div className="w-full aspect-square rounded-md overflow-hidden border mb-2 relative transition-all duration-150 border-gray-200 group-hover:border-black">
                 <Image
                   src="/images/collection_tiles_images/bundle_builder_tile.jpg"
@@ -185,7 +205,7 @@ export default async function Home() {
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">Houseplants</h2>
           <Link
-            href="/collections/house-plants"
+            href={collectionLinks.housePlantsLinkObject.path}
             className="text-[var(--color-coral)] font-medium flex items-center"
           >
             SEE ALL
@@ -204,7 +224,7 @@ export default async function Home() {
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">Lawn & Garden</h2>
           <Link
-            href="/collections/lawn-garden"
+            href={collectionLinks.lawnGardenLinkObject.path}
             className="text-[var(--color-coral)] font-medium flex items-center"
           >
             SEE ALL
@@ -223,7 +243,7 @@ export default async function Home() {
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">Hydro & Aquatic</h2>
           <Link
-            href="/collections/hydro-aquatic"
+            href={collectionLinks.hydroAquaticLinkObject.path}
             className="text-[var(--color-coral)] font-medium flex items-center"
           >
             SEE ALL
@@ -242,7 +262,7 @@ export default async function Home() {
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">Specialty Supplements</h2>
           <Link
-            href="/collections/specialty-supplements"
+            href={collectionLinks.specialtySupplementsLinkObject.path}
             className="text-[var(--color-coral)] font-medium flex items-center"
           >
             SEE ALL
@@ -349,10 +369,11 @@ export default async function Home() {
             <p>Nourish every plant.</p>
           </div>
         </div>
-
-        <Button className="bg-[var(--color-coral)] hover:bg-[var(--color-coral)]/90 text-white w-full">
-          SHOP ALL
-        </Button>
+        <Link href={comingSoonLinkObject.path} passHref>
+          <Button className="bg-[var(--color-coral)] hover:bg-[var(--color-coral)]/90 text-white w-full">
+            SHOP ALL
+          </Button>
+        </Link>
       </section>
 
       {/* Reviews Section */}

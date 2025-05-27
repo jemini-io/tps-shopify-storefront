@@ -4,22 +4,30 @@ import Image from "next/image"
 import ProductCard from "@/components/product-card"
 import { Button } from "@/components/ui/button"
 import StickyCategoryNav from "@/components/sticky-category-nav"
+import { redirect } from "next/navigation";
+import { comingSoonLinkObject } from "@/lib/links"
 
-export default async function CollectionPage({ params }: { params: { handle: string } }) {
-  const { handle } = params
+export default async function CollectionPage({ params }: { params: Promise<{ handle: string }> }) {
+  const { handle } = await params
+  // console.log("Collection handle:", handle)
   const { body } = await getCollectionByHandle(handle)
+
+  // console.log("Respuesta de getCollectionByHandle:", JSON.stringify(body, null, 2))
+
   const { body: collectionsData } = await getCollections()
 
   if (!body?.data?.collectionByHandle) {
-    notFound()
+    //notFound()
+    redirect(comingSoonLinkObject.path);
   }
 
   const collection = body.data.collectionByHandle
   const products = collection.products.edges.map((edge: any) => edge.node)
+  // console.log("Products for rendering:", products)
   const collections = collectionsData?.data?.collections?.edges || []
 
   // Format the collection title for display
-  const formattedTitle = collection.title.replace(/&/g, "&amp;")
+  const formattedTitle = collection.title.replace(/&/g, "and")
 
   return (
     <div className="bg-cream">
@@ -27,7 +35,8 @@ export default async function CollectionPage({ params }: { params: { handle: str
       <div className="relative">
         <div className="bg-green-100 aspect-[2/1] relative">
           <Image
-            src={`/placeholder.svg?height=300&width=600&query=${collection.title} plants`}
+            // src={`/placeholder.svg?height=300&width=600&query=${collection.title} plants`}
+            src={collection.image?.url || "/placeholder.svg"}
             alt={collection.title}
             fill
             className="object-cover"
