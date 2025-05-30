@@ -1,4 +1,5 @@
 import { LATEST_API_VERSION } from "@shopify/shopify-api"
+import { getFAKEProductByHandle, getFAKECollectionByHandle, getFAKECollections } from "./fakeShopify"
 
 const domain = process.env.SHOPIFY_STORE_DOMAIN || ""
 const storefrontAccessToken = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN || ""
@@ -121,7 +122,7 @@ export async function getProductsByTag(tag: string, first = 5) {
 }
 
 export async function getProductByHandle(handle: string) {
-  return shopifyFetch({
+  const productByHandle = await shopifyFetch({
     query: `
       query GetProductByHandle($handle: String!) {
         productByHandle(handle: $handle) {
@@ -173,10 +174,23 @@ export async function getProductByHandle(handle: string) {
       handle,
     },
   })
+
+  // console.log("Product by handle SHOPIFY:", productByHandle.body.data.productByHandle.variants.edges[0].node)
+
+  // console.log("FAKE Product by handle    :", getFAKEProductByHandle(handle).body.data.productByHandle.variants.edges[0].node)
+
+  return (
+    productByHandle.status === 200 &&
+    productByHandle.body &&
+    productByHandle.body.data &&
+    productByHandle.body.data.productByHandle
+  )
+    ? productByHandle
+    : getFAKEProductByHandle(handle);
 }
 
 export async function getCollectionByHandle(handle: string) {
-  return shopifyFetch({
+  const collectionsByHandle = await shopifyFetch({
     query: `
       query GetCollectionByHandle($handle: String!) {
         collectionByHandle(handle: $handle) {
@@ -217,10 +231,20 @@ export async function getCollectionByHandle(handle: string) {
       handle,
     },
   })
+
+  return (
+    collectionsByHandle.status === 200 &&
+    collectionsByHandle.body &&
+    collectionsByHandle.body.data &&
+    collectionsByHandle.body.data.collectionByHandle
+  )
+    ? collectionsByHandle
+    : getFAKECollectionByHandle(handle);
 }
 
 export async function getCollections() {
-  return shopifyFetch({
+  // Fetch the first 10 collections
+  const collections = await shopifyFetch({
     query: `
       query GetCollections {
         collections(first: 10) {
@@ -239,4 +263,7 @@ export async function getCollections() {
       }
     `,
   })
+  return collections.body && collections.status === 200
+    ? collections 
+    : getFAKECollections();
 }

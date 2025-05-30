@@ -6,24 +6,28 @@ import { Button } from "@/components/ui/button"
 import StickyCategoryNav from "@/components/sticky-category-nav"
 import { redirect } from "next/navigation";
 import { comingSoonLinkObject } from "@/lib/links"
+import { getFAKECollectionByHandle } from "@/lib/fakeShopify"
 
 export default async function CollectionPage({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params
-  // console.log("Collection handle:", handle)
   const { body } = await getCollectionByHandle(handle)
 
-  // console.log("Respuesta de getCollectionByHandle:", JSON.stringify(body, null, 2))
+  console.log("\n>>>>Body:", body, "\n\n");
 
   const { body: collectionsData } = await getCollections()
 
   if (!body?.data?.collectionByHandle) {
     //notFound()
-    redirect(comingSoonLinkObject.path);
+    // redirect(comingSoonLinkObject.path);
   }
 
   const collection = body.data.collectionByHandle
+  console.log("#####>>>>>>> 1. Collection:", collection)
+  console.log("@@@@@@ Edges:\n\n")
+  collection.products.edges.map((edge: any) => console.log(edge))
   const products = collection.products.edges.map((edge: any) => edge.node)
-  // console.log("Products for rendering:", products)
+  // console.log("#####>>>>>>> 2. Products:", products)
+
   const collections = collectionsData?.data?.collections?.edges || []
 
   // Format the collection title for display

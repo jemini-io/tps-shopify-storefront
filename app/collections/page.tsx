@@ -6,6 +6,11 @@ export default async function CollectionsPage() {
   const { body } = await getCollections()
   const collections = body?.data?.collections?.edges || []
 
+  // JUST FOR DEBUGGING:
+  // collections.map((collection: any) => {
+  //   console.log("IMAGE URL:", collection.node.image.url)
+  // })
+
   return (
     <div className="bg-cream p-4">
       <h1 className="text-2xl font-bold mb-6">Shop by Collection</h1>

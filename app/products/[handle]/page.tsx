@@ -13,6 +13,8 @@ export default async function ProductPage({ params }: { params: { handle: string
   const { handle } = params
   const { body } = await getProductByHandle(handle)
 
+  console.log("Product data for rendering:", body)
+
   if (!body?.data?.productByHandle) {
     //notFound()
     redirect(comingSoonLinkObject.path);
